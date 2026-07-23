@@ -1,69 +1,111 @@
-# Lumera Orbit🪐
+# 🪐 Orbit
 
-**Lumera Orbit** is the first project developed under the Lumera ecosystem.
+**Orbit** is a lightweight Linux terminal assistant that helps users explore and learn Linux commands directly from their terminal.
 
-Orbit is a terminal-based Linux assistant written in Python that helps users learn Linux commands through a simple interactive interface.
-
----
-
-## Current Features
-
-- Interactive terminal interface
-- Linux command lookup
-- Displays the purpose of commands
-- Displays command notes
-- Built-in `help` command
-- Built-in `exit` command
-- CSV-based command database
+Orbit provides a simple command-line interface where users can search for Linux commands, understand their purpose, and learn basic usage without leaving the terminal.
 
 ---
 
-## Technologies
+## ✨ Features
 
-- Python 3
-- CSV
-- pathlib
+- 🐧 Terminal-based Linux assistant
+- 📚 Quick Linux command lookup
+- ⚡ Lightweight and fast
+- 📄 Uses a structured CSV command database
+- 🧑‍💻 Beginner-friendly Linux learning tool
+- 🔍 Simple command search system
 
 ---
 
-## Project Structure
+## 📂 Project Structure
 
 ```
 Orbit/
-└── V1.0/
-    ├── orbit.py
-    ├── linux_commands.csv
-    └── README.md
+│
+├── V1.0/
+│   ├── lumera_orbit.py
+│   ├── linux_commands.csv
+│
+└── README.md
 ```
 
 ---
-How to Run Orbit
-1. Clone the Repository
-git clone https://github.com/yourusername/LUMERA.git
-2. Navigate to Orbit
+
+# 🛠 Requirements
+
+Before running Orbit, make sure you have:
+
+- Linux operating system
+- Python 3.x installed
+- Terminal access
+
+Check Python version:
+
+```bash
+python3 --version
+```
+
+---
+
+# 🚀 How to Run Orbit
+
+## 1. Clone the Repository
+
+```bash
+git clone https://github.com/malaika-nadeem/LUMERA.git
+```
+
+---
+
+## 2. Navigate to Orbit
+
+```bash
 cd LUMERA/Orbit/V1.0
-3. Make Orbit Executable
+```
+
+---
+
+## 3. Make Orbit Executable
+
+```bash
 chmod +x lumera_orbit.py
-4. Run Orbit
+```
+
+---
+
+## 4. Run Orbit
+
+```bash
 ./lumera_orbit.py
+```
 
-Orbit will start running in your terminal.
+Orbit will now start running in your terminal.
 
-🔗 Run Orbit as a Terminal Command (Optional)
+---
+
+# 🔗 Run Orbit as a Terminal Command (Optional)
 
 You can install Orbit as a system command:
 
+```bash
 sudo ln -s $(pwd)/lumera_orbit.py /usr/local/bin/orbit
+```
 
-Now you can launch Orbit from anywhere:
+Now Orbit can be launched from anywhere:
 
+```bash
 orbit
-🖥 Example
-$ orbit
+```
 
+---
+
+# 🖥 Example
+
+```
 Welcome to Orbit 🌌
 
 Enter a Linux command:
+
 > ls
 
 Command: ls
@@ -73,32 +115,41 @@ Lists files and directories.
 
 Usage:
 ls [options] [directory]
-
-## Future Development
-
-Planned improvements include:
-
-- Natural language command search
-- AI-powered explanations
-- Command examples
-- Search by category
-- Favorites system
-- Command history
-- Safe command execution
-- Plugin architecture
+```
 
 ---
 
-## Current Version
+# 🧠 Why Orbit?
 
-**Version:** V1.0
+Linux contains hundreds of powerful commands, but remembering them all can be difficult for beginners.
 
-This release represents the foundation of Orbit.
+Orbit aims to make Linux command discovery easier by providing a simple assistant that lives inside the terminal.
 
 ---
 
-## Author
+# 🔮 Future Development
 
-Malaika Nadeem
+Planned improvements:
 
-Part of the **Lumera** ecosystem.
+- More Linux commands
+- Better search functionality
+- Interactive Linux learning mode
+- Command explanations with examples
+- Additional terminal utilities
+
+---
+
+# 👩‍💻 Author
+
+Built by **Malaika Nadeem**
+
+A learning project exploring:
+
+- Python
+- Linux
+- Terminal tools
+- Command-line applications
+
+---
+
+⭐ If you find Orbit useful, consider starring the repository.
