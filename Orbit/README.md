@@ -37,6 +37,42 @@ Orbit/
 ```
 
 ---
+How to Run Orbit
+1. Clone the Repository
+git clone https://github.com/yourusername/LUMERA.git
+2. Navigate to Orbit
+cd LUMERA/Orbit/V1.0
+3. Make Orbit Executable
+chmod +x lumera_orbit.py
+4. Run Orbit
+./lumera_orbit.py
+
+Orbit will start running in your terminal.
+
+🔗 Run Orbit as a Terminal Command (Optional)
+
+You can install Orbit as a system command:
+
+sudo ln -s $(pwd)/lumera_orbit.py /usr/local/bin/orbit
+
+Now you can launch Orbit from anywhere:
+
+orbit
+🖥 Example
+$ orbit
+
+Welcome to Orbit 🌌
+
+Enter a Linux command:
+> ls
+
+Command: ls
+
+Description:
+Lists files and directories.
+
+Usage:
+ls [options] [directory]
 
 ## Future Development
 
