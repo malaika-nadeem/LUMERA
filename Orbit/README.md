@@ -1,4 +1,4 @@
-# Lumera Orbit
+# Lumera Orbit🪐
 
 **Lumera Orbit** is the first project developed under the Lumera ecosystem.
 
