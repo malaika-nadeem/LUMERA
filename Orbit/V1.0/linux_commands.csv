@@ -1,0 +1,20 @@
+Chapter,Command,Purpose,Syntax,Example,Options,Category,Difficulty,Notes
+1,pwd,Print current working directory,pwd,pwd,None,Navigation,Easy,Shows the current directory.
+1,ls,List files and directories,ls [options] [path],ls,-l -a -h,Navigation,Easy,Lists directory contents.
+1,cd,Change directory,cd <directory>,cd Documents,None,Navigation,Easy,Use 'cd ..' to go back one level.
+1,clear,Clear the terminal screen,clear,clear,None,Terminal,Easy,Clears the visible terminal.
+1,history,Display command history,history,history,None,Terminal,Easy,Shows previously executed commands.
+1,man,Display command manual,man <command>,man ls,None,Help,Easy,Opens the manual page.
+1,whoami,Show current user,whoami,whoami,None,System,Easy,Displays the logged-in username.
+1,date,Display current date and time,date,date,None,System,Easy,Shows system date and time.
+1,cal,Display calendar,cal,cal,None,System,Easy,Shows the current month's calendar.
+2,mkdir,Create a new directory,mkdir <directory>,mkdir projects,-p,Files,Easy,Creates a folder.
+2,rmdir,Remove an empty directory,rmdir <directory>,rmdir test,None,Files,Easy,Works only on empty directories.
+2,touch,Create an empty file,touch <file>,touch notes.txt,None,Files,Easy,Creates a file if it doesn't exist.
+2,cp,Copy files or directories,cp [options] <source> <destination>,cp file.txt backup.txt,-r,Files,Easy,-r copies directories recursively.
+2,mv,Move or rename files,mv <source> <destination>,mv file.txt Documents/,None,Files,Easy,Can also rename files.
+2,rm,Remove files or directories,rm [options] <file>,rm notes.txt,-r -f,Files,Medium,Use with caution.
+2,cat,Display file contents,cat <file>,cat notes.txt,None,Files,Easy,Prints file contents.
+2,less,View file one page at a time,less <file>,less notes.txt,None,Files,Easy,Press q to quit.
+2,head,Display first lines of a file,head <file>,head notes.txt,-n,Files,Easy,Default is first 10 lines.
+2,tail,Display last lines of a file,tail <file>,tail notes.txt,-n -f,Files,Easy,-f follows file updates.
