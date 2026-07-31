@@ -4,33 +4,51 @@ import csv
 from pathlib import Path
 script_dir = Path(__file__).resolve().parent
 csv_file = script_dir / "linux_commands.csv"
-print("========================OrbitV1.0========================")
-while True:
- command = input("Enter a command:")
- print(f" You entered: {command}")
- if command == "exit":
-    print("Goodbye!!!!!")
-    break
+from rich.console import Console
+from pyfiglet import Figlet
 
-# Open the file securely using a context manager
- with open(csv_file, "r", encoding="utf-8") as file:
-    reader = csv.reader(file)
+console = Console()
+
+fig = Figlet(font="slant")
+console.print(f"[cyan]{fig.renderText('ORBIT')}[/cyan]")
+console.print("[bold white]Linux Command Assistant[/bold white]")
+console.print("[green]Version 1.0[/green]")
+with open(csv_file, "r", encoding="utf-8") as file:
+    reader = list(csv.reader(file))
+
+while True:
+    command = input("orbit> ").strip().lower()
+
+    if command == "exit":
+        console.print("[bold green]Goodbye![/bold green]")
+        break
+
+    if not command:
+        continue
+
     found = False
-    # Optional: Skip the header row if you only want the data
-    header = next(reader) 
-    # Loop through each row
-    for row in reader: 
-        if row[1] == command:
+
+    # Help command
+    if command == "help":
+        console.print("[bold cyan]Available Commands:[/bold cyan]")
+        for row in reader[1:]:  # Skip the header
+            console.print(f"• {row[1]}")
+        continue
+
+    # Search for the command
+    for row in reader[1:]:  # Skip the header
+        if row[1].lower() == command:
             found = True
-            print(f"===========================\nThe Purpose of command is:\n{row[2]}")
-            print(f"===========================\nNotes:\n{row[8]}\n=========================")
-        if command == "help":
-         found = True
-         print("=============================\n", row[1])    
-     
- if found == False:
-            print("Command is not found :(")            
- 
+            console.print("[bold green]===========================[/bold green]")
+            console.print(f"[yellow]Purpose:[/yellow]\n{row[2]}")
+            console.print("[bold green]===========================[/bold green]")
+            console.print(f"[yellow]Notes:[/yellow]\n{row[8]}")
+            console.print("[bold green]===========================[/bold green]")
+            break
+
+    if not found:
+        console.print("[bold red]❌ Command not found.[/bold red]")
+        console.print("Type [cyan]help[/cyan] to see all available commands.")
      
                  
          
