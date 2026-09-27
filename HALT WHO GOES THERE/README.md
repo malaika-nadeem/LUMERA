@@ -1,4 +1,4 @@
-💀# HALT! WHO GOES THERE?
+💀HALT! WHO GOES THERE?
 
 A small neural-network security experiment that classifies login attempts as **legitimate user, impersonator, or bot**.
 
