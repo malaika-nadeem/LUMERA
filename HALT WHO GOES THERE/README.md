@@ -1,42 +1,127 @@
-# 💀HALT! WHO GOES THERE?
+💀# HALT! WHO GOES THERE?
 
-*A tiny neural network standing guard at the login gate.*
+A small neural-network security experiment that classifies login attempts as **legitimate user, impersonator, or bot**.
 
-New device from an unfamiliar country? Not today. This project trains a small logistic regression model (built with Keras/TensorFlow) to look at a login attempt and decide whether it smells suspicious.
+HALT uses login behavior such as login time, country match, device familiarity, and email-account consistency to learn patterns associated with different types of login attempts.
 
----
+## Overview
 
-## What it does
+The project uses a **Keras/TensorFlow softmax classifier** with a single hidden layer.
 
-The model checks three things about every login:
+The model takes five input features:
 
-- **When** — what hour the login happened
-- **Where** — whether the login is coming from the user's usual country
-- **What** — whether the device is recognized or brand new
+* `hour_sin` — cyclical representation of login hour
+* `hour_cos` — cyclical representation of login hour
+* `country_match` — whether the country matches the expected country
+* `device_known` — whether the device is recognized
+* `email_matches_account` — whether the email matches the account
 
-...and outputs a probability that the login is suspicious.
+The output contains three classes:
 
-## The rule it learned
+* `legitimate user`
+* `impersonator`
+* `bot`
 
+## Model
+
+```text
+Input: 5 features
+        ↓
+Dense: 16 neurons + ReLU
+        ↓
+Dense: 3 neurons + Softmax
+        ↓
+Login classification
 ```
-suspicious = 1   if device is NEW  AND  country is UNUSUAL
-suspicious = 0   otherwise
+
+The model is trained using:
+
+* **Optimizer:** Adam
+* **Loss:** Sparse Categorical Crossentropy
+* **Training:** 100 epochs
+* **Train/Test Split:** 70/30
+* **Stratification:** Enabled
+
+## Feature Engineering
+
+Login hour is represented using sine and cosine rather than linear scaling:
+
+```python
+hour_sin = np.sin(2 * np.pi * login_hour / 24)
+hour_cos = np.cos(2 * np.pi * login_hour / 24)
 ```
 
-Only the **combination** of both risk factors together counts as suspicious — a new phone from your home country is fine, and your old laptop showing up abroad is fine too. It's the two together that raise the flag.
+This preserves the cyclical nature of time, where `23:00` and `00:00` are close to each other.
 
-## How it's built
+## Prediction
 
-- **Data:** 2000 synthetic login records generated from the rule above, with 5% label noise added to keep it realistic
-- **Preprocessing:** `login_hour` manually min-max scaled to a 0–1 range
-- **Split:** 70/30 train/test, stratified to preserve the ~11% suspicious class ratio
-- **Model:** a single-layer logistic regression (`Dense(1, activation='sigmoid')`) — no hidden layers needed, since this rule is linearly separable
-- **Training:** Adam optimizer, binary crossentropy loss, class weighting to counter the class imbalance
+The `check_login()` function accepts a login attempt and returns:
 
-## Try it yourself
+* Predicted class
+* Prediction confidence
+* Probability for each class
 
-Run the notebook, and at the prompt enter three values — hour (0–23), country match (0/1), device known (0/1) — and the guard will tell you whether it's letting you through.
+Example input:
 
----
+```text
+login_hour = 23
+country_match = 0
+device_known = 0
+email_matches_account = 1
+```
 
-*Part of the [Lumera](https://github.com/malaika-nadeem/LUMERA) project collection.*
+The model then evaluates the attempt and classifies it based on the patterns learned from the dataset.
+
+## Dataset
+
+The dataset contains simulated login attempts with four input attributes and a target label:
+
+```text
+login_hour
+country_match
+device_known
+email_matches_account
+label
+```
+
+The dataset is intended for experimentation and model-learning purposes rather than real-world authentication.
+
+## Technologies
+
+* Python
+* TensorFlow / Keras
+* NumPy
+* Pandas
+* Scikit-learn
+* Matplotlib
+
+## Project Structure
+
+```text
+HALT WHO GOES THERE/
+├── HALTWHOGOESTHERE.py
+├── halt_who_goes_there_logins.csv
+└── README.md
+```
+
+## Running
+
+Install dependencies:
+
+```bash
+pip install tensorflow numpy pandas scikit-learn matplotlib
+```
+
+Run the program:
+
+```bash
+python HALTWHOGOESTHERE.py
+```
+
+## Purpose
+
+HALT is an experimental project exploring how a small neural network can learn behavioral patterns from login data and use those patterns for multi-class classification.
+
+> **HALT! WHO GOES THERE?**
+>
+> A small experiment in machine learning, behavioral signals, and security.
