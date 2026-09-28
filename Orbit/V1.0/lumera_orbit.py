@@ -3,7 +3,7 @@ import random
 import csv
 from pathlib import Path
 script_dir = Path(__file__).resolve().parent
-csv_file = script_dir / "linux_commands.csv"
+csv_file = script_dir / "commands.csv"
 from rich.console import Console
 from pyfiglet import Figlet
 
